@@ -1,0 +1,34 @@
+.mp-stacks-sharelinks{
+	display:inline-block;
+	vertical-align: top;	
+}
+.mp-stacks-sharelink{
+	position:relative;
+	float:left;	
+	text-align:center;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+	display:inline-block;
+}
+.mp-stacks-sharelink a{
+	position:absolute;
+	top:-14%;
+	left:0px;	
+}
+.mp-stacks-sharelinks-icon-link {
+	display:inline-block;	
+}
+.mp-stacks-sharelinks .mp-stacks-sharelink img{
+	margin: 0px;
+}
+.mp-stacks-sharelinks-icon-container.mp-stacks-sharelinks-image{
+	margin: 14% 0px 0px 0px;	
+}
+.mp-stacks-sharelinks-clearedfix:after {
+	content: ".";
+	visibility: hidden;
+	display: block;
+	height: 0;
+	clear: both;
+}
