@@ -183,7 +183,10 @@ function mp_stacks_brick_content_output_sharelinks($default_content_output, $mp_
 	$counter = 1;
 	
 	//get the queried post id
-	$queried_id = get_query_var( 'queried_object_id' );
+	global $wp_query;
+	$queried_id = $wp_query->queried_object_id;
+	
+	$featured_image = mp_core_the_featured_image( $queried_id );
 	
 	if ($sharelinks_repeaters ){
 		
@@ -212,10 +215,10 @@ function mp_stacks_brick_content_output_sharelinks($default_content_output, $mp_
 						$share_url = 'http://www.facebook.com/share.php?u=' . mp_core_get_current_url();
 						break;
 					case 'pinterest':
-						$share_url = 'http://pinterest.com/pin/create/button/?url=' . mp_core_get_current_url() . '&media=&description=' . get_the_title( $queried_id );
+						$share_url = 'http://pinterest.com/pin/create/button/?url=' . mp_core_get_current_url() . '&media=' . $featured_image . '&description=' . get_the_title( $queried_id ) . ' | ' . get_bloginfo( 'name' );
 						break;
 					case 'linkedin':
-						$share_url = 'http://www.linkedin.com/shareArticle?mini=true&url=' . mp_core_get_current_url() . '&title=' . get_the_title( $queried_id ) . '&summary=' . get_the_title( $queried_id ) . '&source=' . get_bloginfo( 'wpurl' );
+						$share_url = 'http://www.linkedin.com/shareArticle?mini=true&url=' . mp_core_get_current_url() . '&title=' . get_the_title( $queried_id ) . ' | ' . get_bloginfo( 'name' ) . '&summary=' . get_the_title( $queried_id ) . '&source=' . get_bloginfo( 'wpurl' );
 						break;
 					case 'googleplus':
 						$share_url = 'https://plus.google.com/share?url=' . mp_core_get_current_url();
