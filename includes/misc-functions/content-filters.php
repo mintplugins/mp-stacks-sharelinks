@@ -203,29 +203,45 @@ function mp_stacks_brick_content_output_sharelinks($default_content_output, $mp_
 				}
 				//If they haven't saved an open type
 				else{
-					$target = '_parent';
+					$target = 'popup_window';
 				}
 				
 				//Get the format of the share url based on the service
 				switch ($sharelinks_repeater['sharelink_service'] ){
 					case 'twitter':
 						$share_url = 'http://twitter.com/?status=' . mp_core_get_current_url();
+						$popup_width = '500';
+						$popup_height = '440';
 						break;
 					case 'facebook':
 						$share_url = 'http://www.facebook.com/share.php?u=' . mp_core_get_current_url();
+						$popup_width = '500';
+						$popup_height = '532';
 						break;
 					case 'pinterest':
-						$share_url = 'http://pinterest.com/pin/create/button/?url=' . mp_core_get_current_url() . '&media=' . $featured_image . '&description=' . the_title_attribute( 'echo=0&post=' . $queried_id ) . ' | ' . get_bloginfo( 'name' );
+						$share_url = 'http://pinterest.com/pin/create/button/?url=' . mp_core_get_current_url() . '&media=' . $featured_image . '&description=' . htmlspecialchars( strip_tags( mp_core_get_excerpt_by_id( $queried_id ) ) ) . ' | ' . get_bloginfo( 'name' );
+						$popup_width = '500';
+						$popup_height = '325';
 						break;
 					case 'linkedin':
-						$share_url = 'http://www.linkedin.com/shareArticle?mini=true&url=' . mp_core_get_current_url() . '&title=' . get_the_title( $queried_id ) . ' | ' . get_bloginfo( 'name' ) . '&summary=' . get_the_title( $queried_id ) . '&source=' . get_bloginfo( 'wpurl' );
+						$share_url = 'http://www.linkedin.com/shareArticle?mini=true&url=' . mp_core_get_current_url() . '&title=' . the_title_attribute( 'echo=0&post=' . $queried_id ) . ' | ' . get_bloginfo( 'name' ) . '&summary=' . htmlspecialchars( strip_tags( mp_core_get_excerpt_by_id( $queried_id ) ) ) . '&source=' . get_bloginfo( 'wpurl' );
+						$popup_width = '500';
+						$popup_height = '600';
 						break;
 					case 'googleplus':
 						$share_url = 'https://plus.google.com/share?url=' . mp_core_get_current_url();
+						$popup_width = '500';
+						$popup_height = '500';
 						break;
 				}
 				
-				$sharelinks_output .= '<a href="' . $share_url . '" class="mp-stacks-sharelinks-icon-link" target="' . $target . '" title="' . the_title_attribute( 'echo=0&post=' . $queried_id )  . '">';
+				if ( empty( $share_url ) ){
+					return false;	
+				}
+				
+				$target = $target == '_blank' ? ' target="_blank" ' : 'onclick="window.open(\'' . $share_url. '\', \'' . the_title_attribute( 'echo=0&post=' . $queried_id ) . '\', \'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' . $popup_width  . ', height=' . $popup_height . '\'); return false;"';
+				
+				$sharelinks_output .= '<a href="' . $share_url . '" class="mp-stacks-sharelinks-icon-link" ' . $target . ' title="' . the_title_attribute( 'echo=0&post=' . $queried_id )  . '">';
 										
 					//If we should use an image as the sociallind icon
 					if ( $sharelinks_repeater['sharelink_icon_type'] == 'sharelink_image' ){

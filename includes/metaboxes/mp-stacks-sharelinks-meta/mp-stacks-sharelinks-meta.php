@@ -136,7 +136,7 @@ function mp_stacks_sharelinks_create_meta_box(){
 			'field_description' 	=> 'Optional: How should this link open?',
 			'field_type' 	=> 'select',
 			'field_value' => '',
-			'field_select_values' => array( '_parent' => __( 'Open in current Window/Tab', 'mp_stacks_sharelinks' ), '_blank' => __( 'Open in New Window/Tab', 'mp_stacks_sharelinks' ) ),
+			'field_select_values' => array( 'popup_window' => __( 'Open in Popup Window', 'mp_stacks_sharelinks' ), '_blank' => __( 'Open in New Window/Tab', 'mp_stacks_sharelinks' ) ),
 			'field_repeater' => 'mp_sharelinks_repeater',
 			'field_showhider' => 'mp_stacks_sharelinks_links_showhider',
 		),
