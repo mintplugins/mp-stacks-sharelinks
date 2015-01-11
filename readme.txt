@@ -4,7 +4,7 @@ Donate link: http://mintplugins.com/
 Tags: message bar, header
 Requires at least: 3.5
 Tested up to: 4.1
-Stable tag: 1.0.0.1
+Stable tag: 1.0.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,7 +33,10 @@ See full instructions at http://mintplugins.com/doc/mp-stacks
 
 == Changelog ==
 
-= 1.0.0.1 = January 4, 2014
+= 1.0.0.2 = January 11, 2015
+* The Title Attribute keeps layouts from breaking when title has html tags.
+
+= 1.0.0.1 = January 4, 2015
 * Pinterest and Linked in Share using the parent page’s featured image as the thumbnail now.
 
 = 1.0.0.0 = December 19, 2014

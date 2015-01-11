@@ -215,7 +215,7 @@ function mp_stacks_brick_content_output_sharelinks($default_content_output, $mp_
 						$share_url = 'http://www.facebook.com/share.php?u=' . mp_core_get_current_url();
 						break;
 					case 'pinterest':
-						$share_url = 'http://pinterest.com/pin/create/button/?url=' . mp_core_get_current_url() . '&media=' . $featured_image . '&description=' . get_the_title( $queried_id ) . ' | ' . get_bloginfo( 'name' );
+						$share_url = 'http://pinterest.com/pin/create/button/?url=' . mp_core_get_current_url() . '&media=' . $featured_image . '&description=' . the_title_attribute( 'echo=0&post=' . $queried_id ) . ' | ' . get_bloginfo( 'name' );
 						break;
 					case 'linkedin':
 						$share_url = 'http://www.linkedin.com/shareArticle?mini=true&url=' . mp_core_get_current_url() . '&title=' . get_the_title( $queried_id ) . ' | ' . get_bloginfo( 'name' ) . '&summary=' . get_the_title( $queried_id ) . '&source=' . get_bloginfo( 'wpurl' );
@@ -225,7 +225,7 @@ function mp_stacks_brick_content_output_sharelinks($default_content_output, $mp_
 						break;
 				}
 				
-				$sharelinks_output .= '<a href="' . $share_url . '" class="mp-stacks-sharelinks-icon-link" target="' . $target . '" title="' . get_the_title( $queried_id )  . '">';
+				$sharelinks_output .= '<a href="' . $share_url . '" class="mp-stacks-sharelinks-icon-link" target="' . $target . '" title="' . the_title_attribute( 'echo=0&post=' . $queried_id )  . '">';
 										
 					//If we should use an image as the sociallind icon
 					if ( $sharelinks_repeater['sharelink_icon_type'] == 'sharelink_image' ){
