@@ -23,7 +23,7 @@
 	function mp_stacks_sharelinks_update() {
 		$args = array(
 			'software_name' => 'MP Stacks + ShareLinks', //<- The exact name of this Plugin.
-			'software_api_url' => 'https://mintplugins.com',//The URL where ShareLinks and mp_repo are installed and checked
+			'software_api_url' => 'http://mintplugins.com',//The URL where ShareLinks and mp_repo are installed and checked
 			'software_filename' => 'mp-stacks-sharelinks.php',
 			'software_licensed' => false, //<-Boolean
 		);

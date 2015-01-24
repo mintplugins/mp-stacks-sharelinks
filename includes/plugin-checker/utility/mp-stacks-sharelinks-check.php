@@ -29,7 +29,7 @@ if (!function_exists('mp_stacks_sharelinks_plugin_check')){
 				'plugin_message' => __('You require the MP Stacks + ShareLinks plugin. Install it here.', 'mp_stacks_sharelinks'),
 				'plugin_filename' => 'mp-stacks-sharelinks.php',
 				'plugin_download_link' => 'http://mintplugins.com/repo/mp-stacks-sharelinks/?downloadfile=true',
-				'plugin_api_url' => 'https://mintplugins.com/',
+				'plugin_api_url' => 'http://mintplugins.com/',
 				'plugin_info_link' => 'http://mintplugins.com/plugins/mp-stacks-sharelinks',
 				'plugin_group_install' => true,
 				'plugin_licensed' => true,

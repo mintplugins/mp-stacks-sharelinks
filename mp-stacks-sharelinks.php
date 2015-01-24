@@ -3,7 +3,7 @@
 Plugin Name: MP Stacks + ShareLinks
 Plugin URI: https://mintplugins.com
 Description: Content-Type for Bricks which displays share links that, when clicked, share the current page to a website of choice.
-Version: 1.0.0.3
+Version: 1.0.0.4
 Author: Mint Plugins
 Author URI: http://mintplugins.com
 Text Domain: mp_stacks_sharelinks
@@ -34,7 +34,7 @@ License: GPL2
 */
 // Plugin version
 if( !defined( 'MP_STACKS_SHARELINKS_VERSION' ) )
-	define( 'MP_STACKS_SHARELINKS_VERSION', '1.0.0.3' );
+	define( 'MP_STACKS_SHARELINKS_VERSION', '1.0.0.4' );
 
 // Plugin Folder URL
 if( !defined( 'MP_STACKS_SHARELINKS_PLUGIN_URL' ) )
