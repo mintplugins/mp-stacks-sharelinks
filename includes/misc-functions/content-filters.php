@@ -25,6 +25,12 @@ function mp_stacks_brick_content_output_css_sharelinks( $css_output, $post_id, $
 		return $css_output;	
 	}
 	
+	//Enqueue Font Awesome CSS
+	wp_enqueue_style( 'mp-stacks-sharelinks-icons', plugins_url( '/fonts/fontello/css/fontello.css', dirname( __FILE__ ) ), array(), MP_STACKS_SHARELINKS_VERSION );
+			
+	//Enqueue sharelinks CSS
+	wp_enqueue_style( 'mp_stacks_sharelinks_css', plugins_url( 'css/sharelinks.css', dirname( __FILE__ ) ), array(), MP_STACKS_SHARELINKS_VERSION );
+	
 	//Get ShareLinks Metabox Repeater Array
 	$sharelinks_repeaters = get_post_meta($post_id, 'mp_sharelinks_repeater', true);
 	
@@ -184,7 +190,15 @@ function mp_stacks_brick_content_output_sharelinks($default_content_output, $mp_
 	
 	//get the queried post id
 	global $wp_query;
-	$queried_id = $wp_query->queried_object_id;
+	
+	//If we are NOT doing ajax get the parent's post id from the wp_query.
+	if ( !defined( 'DOING_AJAX' ) ){
+		$queried_id = $wp_query->queried_object_id;
+	}
+	//If we are doing ajax, get the parent's post id from the AJAX-passed $POST['mp_stacks_queried_object_id']
+	else{
+		$queried_id = isset( $_POST['mp_stacks_queried_object_id'] ) ? $_POST['mp_stacks_queried_object_id'] : '';
+	}
 	
 	$featured_image = mp_core_the_featured_image( $queried_id );
 	
