@@ -14,7 +14,7 @@
  */
  
 /**
- * Add ShareLinks as a Media Type to the dropdown
+ * Add ShareLinks as a Content Type to the dropdown
  *
  * @since    1.0.0
  * @link     http://mintplugins.com/doc/
@@ -22,7 +22,7 @@
  * @return   void
  */
 function mp_stacks_sharelinks_create_meta_box(){	
-	
+		
 	/**
 	 * Array which stores all info about the new metabox
 	 *
@@ -32,7 +32,8 @@ function mp_stacks_sharelinks_create_meta_box(){
 		'metabox_title' => __( '"ShareLinks" Content-Type', 'mp_stacks_sharelinks'), 
 		'metabox_posttype' => 'mp_brick', 
 		'metabox_context' => 'advanced', 
-		'metabox_priority' => 'low' 
+		'metabox_priority' => 'low',
+		'metabox_content_via_ajax' => true, 
 	);
 	
 	/**
@@ -194,11 +195,7 @@ function mp_stacks_sharelinks_create_meta_box(){
 	 * Custom filter to allow for add-on plugins to hook in their own data for add_meta_box array
 	 */
 	$mp_stacks_sharelinks_add_meta_box = has_filter('mp_stacks_sharelinks_meta_box_array') ? apply_filters( 'mp_stacks_sharelinks_meta_box_array', $mp_stacks_sharelinks_add_meta_box) : $mp_stacks_sharelinks_add_meta_box;
-	
-	//Globalize the and populate mp_stacks_sharelinks_items_array (do this before filter hooks are run)
-	global $global_mp_stacks_sharelinks_items_array;
-	$global_mp_stacks_sharelinks_items_array = $mp_stacks_sharelinks_items_array;
-	
+		
 	/**
 	 * Custom filter to allow for add on plugins to hook in their own extra fields 
 	 */
@@ -210,4 +207,5 @@ function mp_stacks_sharelinks_create_meta_box(){
 	global $mp_stacks_sharelinks_meta_box;
 	$mp_stacks_sharelinks_meta_box = new MP_CORE_Metabox($mp_stacks_sharelinks_add_meta_box, $mp_stacks_sharelinks_items_array);
 }
-add_action('mp_brick_metabox', 'mp_stacks_sharelinks_create_meta_box');
+add_action('mp_brick_ajax_metabox', 'mp_stacks_sharelinks_create_meta_box');
+add_action('wp_ajax_mp_stacks_sharelinks_metabox_content', 'mp_stacks_sharelinks_create_meta_box');
