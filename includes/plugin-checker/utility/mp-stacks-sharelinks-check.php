@@ -11,7 +11,7 @@
  * @license    http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @author     Philip Johnston
  */
- 
+
 /**
 * Check to make sure the MP Stacks + ShareLinks Plugin is installed.
 *
@@ -22,7 +22,7 @@
 */
 if (!function_exists('mp_stacks_sharelinks_plugin_check')){
 	function mp_stacks_sharelinks_plugin_check( $plugins ) {
-		
+
 		$add_plugins = array(
 			array(
 				'plugin_name' => 'MP Stacks + ShareLinks',
@@ -32,13 +32,13 @@ if (!function_exists('mp_stacks_sharelinks_plugin_check')){
 				'plugin_api_url' => 'http://mintplugins.com/',
 				'plugin_info_link' => 'http://mintplugins.com/plugins/mp-stacks-sharelinks',
 				'plugin_group_install' => true,
-				'plugin_licensed' => true,
+				'plugin_licensed' => false,
 				'plugin_licensed_parent_name' => 'Change me to the name of the Parent Plugin',
 				'plugin_required' => true,
 				'plugin_wp_repo' => false,
 			)
 		);
-		
+
 		return array_merge( $plugins, $add_plugins );
 	}
 }
